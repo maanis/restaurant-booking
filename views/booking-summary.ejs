@@ -35,13 +35,20 @@
         <a href="/booking" class="mt-4 inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
           Make Another Booking
         </a>
+
+        <a href="/delete-booking/<%= e._id %>" class="mt-4 inline-block bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600">
+          Delete
+        </a>
       </div>
     <% }) %>
   </div>
  
 <%   } else { %>
 
-  <h2>You have no bookings till now..</h2>
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
+    <h2 class="font-semibold text-red-700 text-lg">You have no bookings till now..</h2>
+    <a href="/booking" class="text-blue-500 underline w-full inline-block text-center">book a table</a>
+  </div>
 
   <%} %>
 

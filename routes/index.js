@@ -87,5 +87,10 @@ router.get('/my-booking', isLoggedIn, async (req, res) => {
   res.render('booking-summary', { bookings, user }); 
 });
 
+router.get('/delete-booking/:id', isLoggedIn, async (req, res) => {
+  await booking.findOneAndDelete({_id: req.params.id})
+  res.redirect('/my-booking')
+});
+
 
 module.exports = router;
