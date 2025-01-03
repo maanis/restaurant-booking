@@ -26,7 +26,6 @@ router.get('/register', (req, res) => {
 
 router.get('/booking', isLoggedIn,async (req, res) => {
   let user = await userModel.findOne({_id: req.user._id})
-  console.log('user',user)
   res.render('bookingForm', { user }); 
 });
 
