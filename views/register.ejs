@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register/Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+
+
+<body class="bg-zinc-900  text-white min-h-screen flex items-center justify-center">
+  <% if (error.length> 0) { %>
+    <div class="absolute bg-red-600 top-0 py-4 px-2 text-center rounded-b-md">
+      <%= error %>
+    </div>
+    <% } %>
+      <div class="relative w-full max-w-sm">
+
+        <div id="register-container"
+          class="p-8 hidden bg-zinc-800 rounded-lg shadow-lg transform transition-transform duration-500">
+          <h2 class="text-2xl font-semibold mb-4 text-center">Register</h2>
+          <form action="/register" method="post">
+            <div class="mb-4">
+              <label for="register-name" class="block mb-1">Name</label>
+              <input required id="register-name" name="username" type="text"
+                class="w-full px-3 py-2 border rounded bg-zinc-900 border-zinc-700 text-white">
+            </div>
+            <div class="mb-4">
+              <label for="register-email" class="block mb-1">Email</label>
+              <input required id="register-email" type="email" name="email"
+                class="w-full px-3 py-2 border rounded bg-zinc-900 border-zinc-700 text-white">
+            </div>
+            <div class="mb-6">
+              <label for="register-password" class="block mb-1">Password</label>
+              <input required id="register-password" name="password" type="password"
+                class="w-full px-3 py-2 border rounded bg-zinc-900 border-zinc-700 text-white">
+            </div>
+
+            <button type="submit" class="w-full py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Register</button>
+          </form>
+          <button id="switch-to-login" class="mt-4 w-full py-2 text-blue-500 hover:underline">Already have an account?
+            Login</button>
+        </div>
+
+
+        <div id="login-container"
+          class="p-8 bg-zinc-800 rounded-lg shadow-lg transform transition-transform duration-500">
+          <h2 class="text-2xl font-semibold mb-4 text-center">Login</h2>
+          <form action="/login" method="post">
+            <div class="mb-4">
+              <label for="login-email" class="block mb-1">name</label>
+              <input id="login-email" name="username" type="text"
+                class="w-full px-3 py-2 border rounded bg-zinc-900 border-zinc-700 text-white">
+            </div>
+            <div class="mb-6">
+              <label for="login-password" class="block mb-1">Password</label>
+              <input id="login-password" name="password" type="password"
+                class="w-full px-3 py-2 border rounded bg-zinc-900 border-zinc-700 text-white">
+            </div>
+            <button type="submit" class="w-full py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Login</button>
+          </form>
+          <button id="switch-to-register" class="mt-4 w-full py-2 text-blue-500 hover:underline">Don't have an account?
+            Register</button>
+        </div>
+      </div>
+
+      <script>
+        const registerContainer = document.getElementById('register-container');
+        const loginContainer = document.getElementById('login-container');
+        const switchToLogin = document.getElementById('switch-to-login');
+        const switchToRegister = document.getElementById('switch-to-register');
+
+
+        switchToLogin.addEventListener('click', () => {
+          registerContainer.classList.add('hidden');
+          loginContainer.classList.remove('hidden');
+        });
+
+        switchToRegister.addEventListener('click', () => {
+          loginContainer.classList.add('hidden');
+          registerContainer.classList.remove('hidden');
+        });
+
+      </script>
+</body>
+
+</html>

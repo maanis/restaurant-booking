@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Info</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-zinc-900 text-white">
+  <div class="min-h-screen flex items-center justify-center">
+    <div class="w-96 bg-zinc-800 p-6 rounded-lg shadow-lg">
+      <!-- User Details -->
+      <div class="flex items-center justify-between">
+        <h1 class="text-2xl font-bold">User Details</h1>
+        <button id="edit-btn" class="text-blue-500 hover:text-blue-400">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l4-4m0 0l4-4m-4 4L7 7" />
+          </svg>
+        </button>
+      </div>
+      <div id="user-details" class="mt-4">
+        <p><strong>Name:</strong> <%= user.username %></p>
+        <p><strong>Email:</strong> <%= user.email %></p>
+        <p><strong>Bookings:</strong> <%= user.bookings.length %></p>
+      </div>
+
+      <!-- Edit Form -->
+      <form id="edit-form" class="hidden mt-4">
+        <div class="mb-4">
+          <label for="name" class="block text-sm font-medium">Name</label>
+          <input type="text" id="name" name="name" value="<%= user.username %>"
+                 class="w-full bg-zinc-700 text-white rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+        <div class="mb-4">
+          <label for="email" class="block text-sm font-medium">Email</label>
+          <input type="email" id="email" name="email" value="<%= user.email %>"
+                 class="w-full bg-zinc-700 text-white rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-lg">Save</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const editBtn = document.getElementById('edit-btn');
+    const userDetails = document.getElementById('user-details');
+    const editForm = document.getElementById('edit-form');
+
+    editBtn.addEventListener('click', () => {
+      userDetails.classList.toggle('hidden');
+      editForm.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
