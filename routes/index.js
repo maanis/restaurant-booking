@@ -16,8 +16,8 @@ router.post('/edit-form', isLoggedIn, async (req, res)=>{
 
   const {name, email} = req.body
   await userModel.findByIdAndUpdate(
-    req.user._id, // Assuming `req.user._id` contains the authenticated user's ID
-    { username: name, email: email } // Update these fields // Return the updated document and run validators
+    req.user._id,
+    { username: name, email: email }
   )
     .then(updatedUser => {
       res.redirect('/info');
@@ -28,7 +28,7 @@ router.post('/edit-form', isLoggedIn, async (req, res)=>{
 });
 
 router.get('/info', isLoggedIn, async(req, res) => {
-  // const user = await userModel.findById(req.user._id);
+
   let user = req.user
   res.render('info', {user}); 
 });
@@ -85,8 +85,14 @@ router.get('/my-booking', isLoggedIn, async (req, res) => {
 });
 
 router.get('/delete-booking/:id', isLoggedIn, async (req, res) => {
+  let user = req.user
   await booking.findOneAndDelete({_id: req.params.id})
+  const index = user.bookings.indexOf(req.params.id);
+  user.bookings.splice(index, 1)
+  await user.save()
+
   res.redirect('/my-booking')
+
 });
 
 
