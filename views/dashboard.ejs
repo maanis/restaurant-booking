@@ -5,21 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Restaurant Dashboard</title>
   <script src="https://cdn.tailwindcss.com"></script>
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body class="bg-gray-900 text-gray-200 min-h-screen flex flex-col">
+<body class="bg-gray-900 relative text-gray-200 min-h-screen flex flex-col">
+
 
   
-  <header class="bg-gray-800 p-4">
-    <div class="max-w-7xl mx-auto flex items-center justify-between">
-      <h1 class="text-3xl max-[685px]:text-center max-[685px]:w-full font-semibold text-white">Restaurant Dashboard</h1>
-      <nav class="space-x-6 flex items-center max-[685px]:hidden">
-        <a href="/" class="text-white hover:text-gray-400">Home</a>
-        <a href="/booking" class="text-white hover:text-gray-400">Book a Table</a>
-        <a href="/info" class="text-white hover:text-gray-400">
+  <header class="bg-gray-800  p-4 relative">
+    <div class="max-w-7xl mx-auto flex items-center justify-between relative">
+      <h1 class="text-3xl max-[685px]:text-lg max-[685px]:w-full font-semibold text-white">Restaurant Dashboard</h1>
+      <nav class="space-x-6 navbar flex items-center max-[685px]:fixed max-[685px]:flex-col max-[685px]:h-[100vh] max-[685px]:w-[70%] top-0  border-b-2 max-[685px]:p-3 max-[685px]:space-x-0 max-[685px]:hidden max-[685px]:bg-zinc-300/30 max-[685px]:backdrop-blur-md max-[685px]:left-0 max-[685px]:bottom-0">
+        <i class="fa-solid  fa-xmark hidden mb-3 max-[685px]:block text-2xl"></i>
+
+        <a href="/" class="text-white max-[685px]:cursor-default hover:text-gray-400 max-[685px]:w-full max-[685px]:inline-block max-[685px]:hover:text-zinc-300 border-b-2 max-[685px]:p-3 max-[685px]:text-xl">Home</a>
+        <a href="/booking" class="text-white max-[685px]:cursor-default hover:text-gray-400 max-[685px]:inline-block max-[685px]:hover:text-zinc-300 max-[685px]:w-full border-b-2 max-[685px]:p-3 max-[685px]:text-xl">Book a Table</a>
+        <a href="/info" class="text-white max-[685px]:cursor-default hover:text-gray-400 max-[685px]:inline-block max-[685px]:hover:text-zinc-300 max-[685px]:w-full border-b-2 max-[685px]:p-3 max-[685px]:text-xl">My Profile</a>
+        <a href="/info" class="text-white max-[685px]:cursor-default hover:text-gray-400  max-[685px]:hidden">
           <img src="/images/userPfp.png" class="h-7 w-7 rounded-full object-cover" alt="">
         </a>
       </nav>
+      <i class="fa-solid  hidden max-[685px]:block text-lg fa-bars"></i>
     </div>
   </header>
 
@@ -64,6 +69,15 @@
       <p>&copy; 2025 Restaurant Name. All rights reserved.</p>
     </div>
   </footer>
+
+  <script>
+    document.querySelector('.fa-bars').addEventListener('click', ()=>{
+      document.querySelector('.navbar').style.display = 'block'
+    })
+    document.querySelector('.fa-xmark').addEventListener('click', ()=>{
+      document.querySelector('.navbar').style.display = 'none'
+    })
+  </script>
 
 </body>
 </html>
