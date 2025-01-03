@@ -20,11 +20,9 @@ router.post('/edit-form', isLoggedIn, async (req, res)=>{
     { username: name, email: email } // Update these fields // Return the updated document and run validators
   )
     .then(updatedUser => {
-      console.log(updatedUser);
       res.redirect('/info');
     })
     .catch(err => {
-      console.error(err);
       res.status(500).send('Internal server error');
     });
 });
@@ -32,7 +30,6 @@ router.post('/edit-form', isLoggedIn, async (req, res)=>{
 router.get('/info', isLoggedIn, async(req, res) => {
   // const user = await userModel.findById(req.user._id);
   let user = req.user
-  console.log('user', user)
   res.render('info', {user}); 
 });
 
