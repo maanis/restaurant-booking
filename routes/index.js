@@ -82,9 +82,9 @@ router.post('/book', isLoggedIn, async (req, res) => {
 });
 
 router.get('/my-booking', isLoggedIn, async (req, res) => {
-
+  let user = req.user
   let bookings = await booking.find({ userId: req.user._id })
-  res.render('booking-summary', { bookings }); 
+  res.render('booking-summary', { bookings, user }); 
 });
 
 
