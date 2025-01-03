@@ -39,7 +39,7 @@ module.exports.login = async (req, res, next) => {
                 if (result) {
                     const token = tokenGenerator(user)
                     res.cookie('token', token)
-                    res.redirect('/dashboard')
+                    res.redirect('/')
                 } else {
                     req.flash('error', 'username or password incorrect')
                     res.redirect('/register')

@@ -10,8 +10,29 @@ router.get('/', (req, res) => {
   res.render('dashboard'); 
 });
 
-router.get('/info', isLoggedIn,(req, res) => {
-let user = req.user
+
+
+router.post('/edit-form', isLoggedIn, async (req, res)=>{
+
+  const {name, email} = req.body
+  await userModel.findByIdAndUpdate(
+    req.user._id, // Assuming `req.user._id` contains the authenticated user's ID
+    { username: name, email: email } // Update these fields // Return the updated document and run validators
+  )
+    .then(updatedUser => {
+      console.log(updatedUser);
+      res.redirect('/info');
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).send('Internal server error');
+    });
+});
+
+router.get('/info', isLoggedIn, async(req, res) => {
+  // const user = await userModel.findById(req.user._id);
+  let user = req.user
+  console.log('user', user)
   res.render('info', {user}); 
 });
 
